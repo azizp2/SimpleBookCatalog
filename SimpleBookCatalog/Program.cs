@@ -3,6 +3,7 @@ using SimpleBookCatalog.Application.Interfaces;
 using SimpleBookCatalog.Components;
 using SimpleBookCatalog.Infrastructure.Context;
 using SimpleBookCatalog.Infrastructure.Repo;
+using SimpleBookCatalog.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddDbContextFactory<SimpleBookDbContext>(options =>
 });
 
 builder.Services.AddScoped<IBookRepo, BookRepo>();
+builder.Services.AddScoped<ISweetAlertService, SweetAlertService>();
+
 
 var app = builder.Build();
 

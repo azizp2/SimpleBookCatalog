@@ -1,4 +1,5 @@
-﻿@inject IBookRepo Repo
+﻿@inject ISweetAlertService SweetAlert
+@inject IBookRepo Repo
 @inject NavigationManager Navigation
 
     <div class="book-card">
@@ -8,11 +9,12 @@
         </div>
         <div class="actions">
             <a href="@($"/edit/{Book.Id }")" class="btn btn-warning ">Edit</a>
+            <button @onclick="DeleteBook" class="btn btn-danger">Delete</button>
             <button @onclick="OpenConfirmDialog" class="btn btn-danger">Deleted</button>
         </div>
     </div>
 
-<ConfirmDialog Show="showConfirmDialog" OnCancel="CancelDelete" OnOk="DeleteBook">
+<ConfirmDialog Show="showConfirmDialog" OnCancel="CancelDelete" OnOk="DeleteBook2">
     <h3>Do you want to delete book @Book.Title</h3>
 </ConfirmDialog>
 @code {
@@ -32,12 +34,21 @@
         showConfirmDialog = false;
     }
 
-    private async Task DeleteBook()
+    private async Task DeleteBook2()
     {
         await Repo.DeleteAsync(Book.Id);
         Navigation.NavigateTo("/");
     }
 
+    private async Task DeleteBook()
+    {
+        var confirmed = await SweetAlert.ConfirmDeleteAsync(Book.Title);
+        if (confirmed)
+        {
+            await Repo.DeleteAsync(Book.Id);
+            Navigation.NavigateTo("/");
+        }
+    }
 
 }
 
