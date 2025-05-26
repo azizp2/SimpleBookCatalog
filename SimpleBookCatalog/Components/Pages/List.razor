@@ -1,0 +1,42 @@
+﻿@page "/"
+@inject IBookRepo Repo
+@* @attribute [StreamRendering] *@
+
+<PageTitle>Book List</PageTitle>
+
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <a class="btn btn-primary btn-sm mb-4" href="add-new">Add New Book</a>
+        @if(books is null)
+        {
+            <div class="book-item">
+                Loading boooks. Pelase wait....
+            </div>
+        }else if(books.Any())
+        {
+            @foreach(var book in books)
+            {
+            <div class="book-item">
+                <BookCard @rendermode="InteractiveServer" Book="book"/>
+            </div>
+            }
+        }
+        else
+        {
+            <div class="book-item">Not Found</div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Book>? books;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1000);
+        books = await Repo.GetAllAsync();
+    }
+
+
+}

@@ -1,0 +1,26 @@
+# Ignore build results
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore Visual Studio folder
+.vs/
+
+# Ignore Rider project files
+.idea/
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore NuGet packages
+*.nupkg
+packages/
