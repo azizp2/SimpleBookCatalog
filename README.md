@@ -20,38 +20,27 @@ SimpleBookCatalog adalah aplikasi katalog buku berbasis **Blazor Server**, diban
 
 ---
 
-## 🧱 Struktur Proyek (Clean Architecture)
+---
 
-SimpleBookCatalog/
-├── SimpleBookCatalog/ # Layer UI (Blazor Server)
-│ ├── wwwroot/ # Static files (JS, CSS, images)
-│ ├── Pages/ # Razor pages & komponen UI
-│ ├── Shared/ # Komponen Blazor yang dipakai bersama
-│ ├── Program.cs # Konfigurasi aplikasi dan service DI
-│ └── _Imports.razor # Direktif umum Razor
-│
-├── SimpleBookCatalog.Application/ # Layer business logic / use cases
-│ ├── Services/ # Implementasi use case, service logic
-│ ├── Interfaces/ # Interface service dan repository
-│ ├── DTOs/ # Data Transfer Objects
-│ └── Validators/ # Validasi input (opsional)
-│
-├── SimpleBookCatalog.Domain/ # Layer domain
-│ ├── Entities/ # Entity model, misal Book.cs
-│ ├── Enums/ # Enum yang digunakan domain
-│ ├── Exceptions/ # Custom exception domain
-│ └── Interfaces/ # Interface domain service dan repository
-│
-├── SimpleBookCatalog.Infrastructure/ # Layer implementasi data & service eksternal
-│ ├── Data/ # DbContext, migrasi Entity Framework Core
-│ ├── Repositories/ # Implementasi repository
-│ ├── Services/ # Service eksternal (email, logging, dll)
-│ └── Migrations/ # Folder migrasi EF Core
-│
-├── .gitignore # File ignore git
-├── README.md # Dokumentasi proyek
-├── SimpleBookCatalog.sln # Solution file
-└── LICENSE # Lisensi proyek
+## 🧪 Teknologi yang Digunakan
+
+- **Blazor Server (.NET 8)**
+- **Entity Framework Core**
+- **SweetAlert2 (via JS Interop)**
+- **C# 12 / Razor Components**
+- **Dependency Injection**
+- **Clean Architecture Principles**
+
+---
+
+## 🚀 Cara Menjalankan Proyek
+
+### 1. Clone dan masuk ke folder
+
+```bash
+git clone https://github.com/azizp2/SimpleBookCatalog.git
+cd SimpleBookCatalog
+
 
 ## 📌 Catatan Tambahan
 
